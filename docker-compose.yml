@@ -40,7 +40,7 @@ services:
     networks:
       - backend
     volumes:
-      - ./api_banking:/app
+      - ./backoffice:/app
 
   banking_db:
     image: postgres:latest

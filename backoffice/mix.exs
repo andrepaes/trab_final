@@ -41,7 +41,8 @@ defmodule Backoffice.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:httpoison, "~> 1.7"}
+      {:httpoison, "~> 1.7"},
+      {:poison, "~> 3.1"}
       ]
     end
 

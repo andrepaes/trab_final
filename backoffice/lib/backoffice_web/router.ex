@@ -5,7 +5,7 @@ defmodule BackofficeWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api/v1/backoffices", BackofficeWeb, as: :backoffice do
+  scope "/api", BackofficeWeb, as: :backoffice do
     pipe_through [:api]
 
     get "/report", ReportController, :report

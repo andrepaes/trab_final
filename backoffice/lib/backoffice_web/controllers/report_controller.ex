@@ -1,15 +1,30 @@
 defmodule BackofficeWeb.ReportController do
   use BackofficeWeb, :controller
 
-  alias Backoffices
+  alias Backoffice.Repo
 
-  action_fallback ApiBankingWeb.FallbackController
+  action_fallback BackofficeWeb.FallbackController
 
-  @url "localhost:4000/report"
+  @url "banking:4000/api/v1/backoffices/report"
 
   def report(conn, params) do
-    @url
-    |> HTTPoison.post(params)
-    |> IO.inspect
+    with {:ok, total} <- get_report,
+         {ok, _} <- increment_counter,
+    do
+      render(conn, "report.json", %{report: total})
+    end
+  end
+
+  def get_report() do
+    {:ok, %HTTPoison.Response{status_code: 200, body: body}} = HTTPoison.get(@url)
+
+    total = body
+    |> Poison.decode!()
+    |> Map.get("total")
+
+    {:ok, total}
+  end
+
+  def increment_counter() do
   end
 end
