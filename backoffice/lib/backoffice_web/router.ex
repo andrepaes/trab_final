@@ -9,5 +9,6 @@ defmodule BackofficeWeb.Router do
     pipe_through [:api]
 
     get "/report", ReportController, :report
+    get "/counter", ReportController, :report_counter
   end
 end

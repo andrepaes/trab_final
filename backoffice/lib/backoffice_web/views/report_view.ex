@@ -4,4 +4,8 @@ defmodule BackofficeWeb.ReportView do
   def render("report.json", %{report: total}) do
     %{total: total || 0}
   end
+
+  def render("counter.json", %{counter: counter}) do
+    %{counter: counter}
+  end
 end
